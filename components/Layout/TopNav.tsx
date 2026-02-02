@@ -29,17 +29,37 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
         
         {/* Logo */}
         <div className="flex items-center gap-3">
-          {/* Increased container to w-8 h-8 for better spacing between circles */}
-          <div className="relative w-8 h-8 flex-shrink-0 drop-shadow-sm">
-            {/* Top */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gigas shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"></div>
-            {/* Right */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-givry border border-cocoa shadow-[0_1px_2px_rgba(0,0,0,0.1)] box-border"></div>
-            {/* Bottom */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cocoa shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)]"></div>
-            {/* Left */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-thatch shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"></div>
-          </div>
+          <svg className="w-8 h-8 flex-shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="icon-grad-top" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="black" stopOpacity="0.2"/>
+                <stop offset="1" stopColor="black" stopOpacity="0"/>
+              </linearGradient>
+              <linearGradient id="icon-grad-bot" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="white" stopOpacity="0.2"/>
+                <stop offset="1" stopColor="white" stopOpacity="0"/>
+              </linearGradient>
+              <filter id="icon-drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="rgba(0,0,0,0.1)"/>
+              </filter>
+            </defs>
+            
+            {/* Top: Gigas */}
+            <circle cx="16" cy="6" r="6" fill="#4a3b9e" />
+            <circle cx="16" cy="6" r="6" fill="url(#icon-grad-top)" />
+
+            {/* Right: Givry + Border Cocoa */}
+            <circle cx="26" cy="16" r="5.5" fill="#f7eec6" stroke="#461828" strokeWidth="1" filter="url(#icon-drop-shadow)" />
+
+            {/* Bottom: Cocoa */}
+            <circle cx="16" cy="26" r="6" fill="#461828" />
+            <circle cx="16" cy="26" r="6" fill="url(#icon-grad-bot)" />
+
+            {/* Left: Thatch */}
+            <circle cx="6" cy="16" r="6" fill="#b69490" />
+            <circle cx="6" cy="16" r="6" fill="url(#icon-grad-top)" opacity="0.5" />
+          </svg>
+          
           <h1 className="text-xl md:text-2xl font-black tracking-tight text-cocoa drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]">
             GIGA<span className="text-thatch">GIVRY</span>
           </h1>
