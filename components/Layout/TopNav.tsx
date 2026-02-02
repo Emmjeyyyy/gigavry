@@ -24,7 +24,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
 
   return (
     <header className="sticky top-0 z-40 w-full mb-8 pt-4 pb-2">
-      <div className="bg-givry/90 backdrop-blur-md border border-cocoa/20 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05),0_1px_0_rgba(255,255,255,0.2)_inset] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-givry/90 backdrop-blur-md border-2 border-cocoa/20 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-300 ease-out shadow-[4px_4px_0px_0px_rgba(70,24,40,0.1),inset_0_1px_0_0_rgba(255,255,255,0.6)] hover:-translate-y-[1px] hover:shadow-[6px_6px_0px_0px_rgba(70,24,40,0.15),inset_0_1px_0_0_rgba(255,255,255,0.6)]">
         
         {/* Logo */}
         <div className="flex items-center gap-3">
