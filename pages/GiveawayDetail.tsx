@@ -77,7 +77,7 @@ export const GiveawayDetailPage: React.FC = () => {
       />
 
       <div className="mb-6">
-        <Button variant="ghost" onClick={() => navigate(-1)} className="pl-0 hover:bg-transparent hover:translate-x-[-4px]">
+        <Button variant="ghost" onClick={() => navigate(-1)} className="pl-0 hover:bg-transparent hover:translate-x-[-2px]">
           ← Back to Giveaways
         </Button>
       </div>
@@ -90,7 +90,7 @@ export const GiveawayDetailPage: React.FC = () => {
           <img 
             src={giveaway.image} 
             alt={giveaway.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" 
           />
           <div className="absolute bottom-0 inset-x-0 h-full bg-gradient-to-t from-cocoa via-cocoa/60 to-transparent flex items-end p-6 md:p-10 pointer-events-none">
             <div className="relative z-10 w-full">

@@ -8,6 +8,7 @@ interface CacheEntry<T> {
   timestamp: number;
 }
 const cache = new Map<string, CacheEntry<any>>();
+const inFlightRequests = new Map<string, Promise<any>>();
 
 // Helper to generate consistent keys from objects
 const getCacheKey = (prefix: string, params: any = {}) => {
@@ -69,6 +70,33 @@ const fetchWithProxy = async (url: string) => {
   throw lastError || new Error('Signal lost: Unable to reach game servers via any proxy.');
 };
 
+// Helper to handle caching and in-flight deduplication
+const fetchWithCache = async <T>(key: string, fetcher: () => Promise<T>): Promise<T> => {
+  // 1. Check Cache
+  const cached = getFromCache<T>(key);
+  if (cached) return cached;
+
+  // 2. Check In-Flight
+  if (inFlightRequests.has(key)) {
+    return inFlightRequests.get(key) as Promise<T>;
+  }
+
+  // 3. Fetch
+  const promise = fetcher()
+    .then((data) => {
+      setCache(key, data);
+      inFlightRequests.delete(key);
+      return data;
+    })
+    .catch((error) => {
+      inFlightRequests.delete(key);
+      throw error;
+    });
+
+  inFlightRequests.set(key, promise);
+  return promise;
+};
+
 export const FreeToGameService = {
   getGamesSync: (params: { platform?: string; category?: string; sort?: string } = {}): FreeGame[] | null => {
     const key = getCacheKey('games', params);
@@ -77,9 +105,7 @@ export const FreeToGameService = {
 
   getGames: async (params: { platform?: string; category?: string; sort?: string } = {}): Promise<FreeGame[]> => {
     const key = getCacheKey('games', params);
-    const cached = getFromCache<FreeGame[]>(key);
-    if (cached) return cached;
-
+    
     const query = new URLSearchParams();
     if (params.platform && params.platform !== 'all') query.append('platform', params.platform);
     if (params.category && params.category !== 'all') query.append('category', params.category);
@@ -88,9 +114,7 @@ export const FreeToGameService = {
     const queryString = query.toString();
     const url = `${API_BASE.FREETOGAME}/games${queryString ? `?${queryString}` : ''}`;
     
-    const data = await fetchWithProxy(url);
-    setCache(key, data);
-    return data;
+    return fetchWithCache<FreeGame[]>(key, () => fetchWithProxy(url));
   },
 
   getGameDetailsSync: (id: number): GameDetail | null => {
@@ -100,13 +124,8 @@ export const FreeToGameService = {
 
   getGameDetails: async (id: number): Promise<GameDetail> => {
     const key = getCacheKey('game_details', { id });
-    const cached = getFromCache<GameDetail>(key);
-    if (cached) return cached;
-
     const url = `${API_BASE.FREETOGAME}/game?id=${id}`;
-    const data = await fetchWithProxy(url);
-    setCache(key, data);
-    return data;
+    return fetchWithCache<GameDetail>(key, () => fetchWithProxy(url));
   }
 };
 
@@ -118,8 +137,6 @@ export const GamerPowerService = {
 
   getGiveaways: async (params: { platform?: string; type?: string; sort?: string } = {}): Promise<Giveaway[]> => {
     const key = getCacheKey('giveaways', params);
-    const cached = getFromCache<Giveaway[]>(key);
-    if (cached) return cached;
 
     const query = new URLSearchParams();
     if (params.platform && params.platform !== 'all') query.append('platform', params.platform);
@@ -129,9 +146,7 @@ export const GamerPowerService = {
     const queryString = query.toString();
     const url = `${API_BASE.GAMERPOWER}/giveaways${queryString ? `?${queryString}` : ''}`;
     
-    const data = await fetchWithProxy(url);
-    setCache(key, data);
-    return data;
+    return fetchWithCache<Giveaway[]>(key, () => fetchWithProxy(url));
   },
 
   getGiveawayDetailsSync: (id: number): Giveaway | null => {
@@ -141,12 +156,7 @@ export const GamerPowerService = {
 
   getGiveawayDetails: async (id: number): Promise<Giveaway> => {
     const key = getCacheKey('giveaway_details', { id });
-    const cached = getFromCache<Giveaway>(key);
-    if (cached) return cached;
-
     const url = `${API_BASE.GAMERPOWER}/giveaway?id=${id}`;
-    const data = await fetchWithProxy(url);
-    setCache(key, data);
-    return data;
+    return fetchWithCache<Giveaway>(key, () => fetchWithProxy(url));
   }
 };

@@ -23,23 +23,30 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
   };
 
   return (
-    <Link to={`/free-games/${game.id}`} className="group block h-full">
-      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(247,238,198,0.4)] hover:border-cocoa flex flex-col relative">
+    <Link to={`/free-games/${game.id}`} className="group block h-full perspective-1000">
+      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 transform 
+        shadow-[0_2px_0_0_rgba(70,24,40,0.05)]
+        hover:-translate-y-[2px] 
+        hover:shadow-[0_4px_0_0_rgba(70,24,40,0.05),0_6px_12px_-4px_rgba(70,24,40,0.15)] 
+        hover:border-cocoa flex flex-col relative">
+        
         <div className="relative aspect-video overflow-hidden">
           <img 
             src={game.thumbnail} 
             alt={game.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             loading="lazy"
           />
           <div className="absolute top-2 right-2">
-            <Badge label={game.platform === 'PC (Windows)' ? 'PC' : 'WEB'} variant="primary" className="shadow-sm" />
+            <Badge label={game.platform === 'PC (Windows)' ? 'PC' : 'WEB'} variant="primary" className="shadow-md" />
           </div>
+          {/* Inner vignette for depth */}
+          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-t-xl pointer-events-none" />
         </div>
         
         <div className="p-4 flex flex-col flex-grow relative z-10">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-thatch transition-colors">
+            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-thatch transition-colors drop-shadow-sm">
               <HighlightedText text={game.title} />
             </h3>
           </div>
@@ -54,7 +61,7 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
           </div>
         </div>
         
-        {/* Hover glow effect */}
+        {/* Hover subtle glow overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-givry via-transparent to-transparent opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none" />
       </article>
     </Link>

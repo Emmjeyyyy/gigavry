@@ -12,10 +12,10 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
 
   return (
     <nav aria-label="Pagination" className="mt-12 mb-8 px-4 w-full flex justify-center">
-      <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 bg-givry border-2 border-cocoa/20 rounded-2xl p-3 sm:px-6 sm:py-3 shadow-[4px_4px_0px_0px_rgba(70,24,40,0.2)]">
+      <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 bg-givry border-2 border-cocoa/20 rounded-2xl p-3 sm:px-6 sm:py-3 shadow-[4px_4px_0px_0px_rgba(70,24,40,0.2),inset_0_1px_0_rgba(255,255,255,0.5)]">
         
         {/* Mobile Info Text */}
-        <span className="sm:hidden font-mono text-xs font-bold text-cocoa tracking-widest">
+        <span className="sm:hidden font-mono text-xs font-bold text-cocoa tracking-widest drop-shadow-sm">
           PAGE {currentPage} / {totalPages}
         </span>
 
@@ -24,14 +24,14 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
             variant="ghost"
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="flex-1 sm:flex-none min-w-[100px] hover:bg-cocoa/10"
+            className="flex-1 sm:flex-none min-w-[100px] hover:bg-cocoa/10 active:shadow-inner"
             aria-label="Previous page"
           >
             ← PREV
           </Button>
 
           {/* Desktop Info Text */}
-          <span className="hidden sm:block font-mono text-sm font-bold text-cocoa tracking-widest min-w-[120px] text-center mx-2">
+          <span className="hidden sm:block font-mono text-sm font-bold text-cocoa tracking-widest min-w-[120px] text-center mx-2 drop-shadow-sm">
             PAGE {currentPage} / {totalPages}
           </span>
 
@@ -39,7 +39,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
             variant="ghost"
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="flex-1 sm:flex-none min-w-[100px] hover:bg-cocoa/10"
+            className="flex-1 sm:flex-none min-w-[100px] hover:bg-cocoa/10 active:shadow-inner"
             aria-label="Next page"
           >
             NEXT →

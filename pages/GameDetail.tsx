@@ -81,7 +81,7 @@ export const GameDetailPage: React.FC = () => {
       />
 
       <div className="mb-6">
-        <Button variant="ghost" onClick={() => navigate(-1)} className="pl-0 hover:bg-transparent hover:translate-x-[-4px]">
+        <Button variant="ghost" onClick={() => navigate(-1)} className="pl-0 hover:bg-transparent hover:translate-x-[-2px]">
           ← Back to Games
         </Button>
       </div>
@@ -96,7 +96,7 @@ export const GameDetailPage: React.FC = () => {
             <img 
               src={game.thumbnail} 
               alt={game.title} 
-              className="w-full transition-transform duration-500 group-hover:scale-105" 
+              className="w-full transition-transform duration-500 group-hover:scale-[1.02]" 
             />
           </div>
           
@@ -159,7 +159,7 @@ export const GameDetailPage: React.FC = () => {
                     key={shot.id} 
                     src={shot.image} 
                     alt="Screenshot" 
-                    className="rounded-lg border border-cocoa/20 hover:scale-105 transition-transform duration-300 cursor-zoom-in"
+                    className="rounded-lg border border-cocoa/20 hover:scale-[1.02] transition-transform duration-300 cursor-zoom-in"
                     onClick={() => setSelectedImage(shot.image)}
                   />
                 ))}

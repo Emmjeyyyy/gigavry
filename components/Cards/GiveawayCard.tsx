@@ -25,31 +25,38 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
   };
 
   return (
-    <Link to={`/giveaways/${giveaway.id}`} className={`group block h-full ${isExpired ? 'opacity-60 grayscale' : ''}`}>
-      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(247,238,198,0.4)] hover:border-cocoa flex flex-col relative">
+    <Link to={`/giveaways/${giveaway.id}`} className={`group block h-full perspective-1000 ${isExpired ? 'opacity-60 grayscale' : ''}`}>
+      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 transform
+        shadow-[0_2px_0_0_rgba(70,24,40,0.05)]
+        hover:-translate-y-[2px] 
+        hover:shadow-[0_4px_0_0_rgba(70,24,40,0.05),0_6px_12px_-4px_rgba(70,24,40,0.15)] 
+        hover:border-cocoa flex flex-col relative">
+        
         <div className="relative aspect-video overflow-hidden">
           <img 
             src={giveaway.thumbnail} 
             alt={giveaway.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             loading="lazy"
           />
           <div className="absolute top-2 left-2">
             <Badge 
               label={giveaway.worth === 'N/A' ? 'FREE' : giveaway.worth} 
               variant="secondary" 
-              className="shadow-sm" 
+              className="shadow-md !bg-gigas !border-gigas" 
             />
           </div>
           <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-cocoa/80 to-transparent p-4 flex items-end">
-            <div className="text-givry text-xs font-mono">
+            <div className="text-givry text-xs font-mono drop-shadow-md">
               {giveaway.type}
             </div>
           </div>
+          {/* Inner vignette */}
+          <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-t-xl pointer-events-none" />
         </div>
         
         <div className="p-4 flex flex-col flex-grow relative z-10">
-          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-thatch transition-colors">
+          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-thatch transition-colors drop-shadow-sm">
             <HighlightedText text={giveaway.title} />
           </h3>
           
@@ -58,7 +65,6 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
           </p>
           
           <div className="flex flex-wrap gap-1 mt-auto pt-3 border-t border-cocoa/10">
-             {/* Platform parsing could be improved, often comma separated */}
              {giveaway.platforms.split(',').slice(0, 2).map(p => (
                <Badge key={p} label={p.trim()} variant="outline" className="text-[9px]" />
              ))}
