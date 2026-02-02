@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FreeGame } from '../../types';
@@ -23,18 +24,18 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
   };
 
   return (
-    <Link to={`/free-games/${game.id}`} className="group block h-full perspective-1000">
-      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 transform 
+    <Link to={`/free-games/${game.id}`} className="group block h-full perspective-1000 relative isolate">
+      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
         shadow-[0_2px_0_0_rgba(70,24,40,0.05)]
-        hover:-translate-y-[2px] 
-        hover:shadow-[0_4px_0_0_rgba(70,24,40,0.05),0_6px_12px_-4px_rgba(70,24,40,0.15)] 
-        hover:border-cocoa flex flex-col relative">
+        group-hover:-translate-y-[2px] 
+        group-hover:shadow-[0_4px_0_0_rgba(70,24,40,0.05),0_6px_12px_-4px_rgba(70,24,40,0.15)] 
+        group-hover:border-cocoa flex flex-col relative">
         
         <div className="relative aspect-video overflow-hidden">
           <img 
             src={game.thumbnail} 
             alt={game.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] will-change-transform"
             loading="lazy"
           />
           <div className="absolute top-2 right-2">

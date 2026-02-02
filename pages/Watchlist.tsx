@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -30,42 +31,44 @@ export const Watchlist: React.FC<WatchlistProps> = ({ searchTerm }) => {
   };
 
   const ItemRow = ({ item }: { item: WatchlistItem }) => (
-    <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 
-      hover:bg-givry hover:border-cocoa/30 group
-      shadow-[0_2px_0_rgba(70,24,40,0.05)]
-      hover:-translate-y-px hover:shadow-[0_3px_6px_rgba(70,24,40,0.1),0_2px_0_rgba(70,24,40,0.05)]
-    ">
-      <div className="w-full sm:w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 shadow-inner relative">
-        <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 shadow-[inset_0_0_10px_rgba(0,0,0,0.2)] pointer-events-none" />
-      </div>
-      
-      <div className="flex-grow text-center sm:text-left">
-        <h4 className="font-bold text-lg text-cocoa leading-tight drop-shadow-sm">{item.title}</h4>
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-2">
-          <Badge label={item.platform} variant="outline" className="text-xs" />
-          <span className="text-xs text-cocoa/60 font-mono">
-            {item.subtitle}
-          </span>
+    <div className="group relative block mb-3">
+      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out transform-gpu will-change-transform
+        hover:bg-givry group-hover:border-cocoa/30
+        shadow-[0_2px_0_rgba(70,24,40,0.05)]
+        group-hover:-translate-y-px group-hover:shadow-[0_3px_6px_rgba(70,24,40,0.1),0_2px_0_rgba(70,24,40,0.05)]
+      ">
+        <div className="w-full sm:w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 shadow-inner relative">
+          <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 shadow-[inset_0_0_10px_rgba(0,0,0,0.2)] pointer-events-none" />
         </div>
-      </div>
+        
+        <div className="flex-grow text-center sm:text-left">
+          <h4 className="font-bold text-lg text-cocoa leading-tight drop-shadow-sm">{item.title}</h4>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-2">
+            <Badge label={item.platform} variant="outline" className="text-xs" />
+            <span className="text-xs text-cocoa/60 font-mono">
+              {item.subtitle}
+            </span>
+          </div>
+        </div>
 
-      <div className="flex items-center gap-3">
-        <Link 
-          to={item.type === 'game' ? `/free-games/${item.id}` : `/giveaways/${item.id}`}
-          className="text-sm font-bold text-thatch hover:text-cocoa uppercase font-mono px-3 py-1.5 rounded hover:bg-cocoa/5 transition-colors"
-        >
-          View
-        </Link>
-        <button 
-          onClick={() => removeFromWatchlist(item.id)}
-          className="p-2 text-cocoa/40 hover:text-red-500 hover:bg-red-50 rounded-full transition-all active:scale-95"
-          title="Remove"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-3">
+          <Link 
+            to={item.type === 'game' ? `/free-games/${item.id}` : `/giveaways/${item.id}`}
+            className="text-sm font-bold text-thatch hover:text-cocoa uppercase font-mono px-3 py-1.5 rounded hover:bg-cocoa/5 transition-colors"
+          >
+            View
+          </Link>
+          <button 
+            onClick={() => removeFromWatchlist(item.id)}
+            className="p-2 text-cocoa/40 hover:text-red-500 hover:bg-red-50 rounded-full transition-all active:scale-95"
+            title="Remove"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
       <div className="bg-givry/90 backdrop-blur-md border border-cocoa/20 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05),0_1px_0_rgba(255,255,255,0.2)_inset] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
         
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5">
           <svg className="w-8 h-8 flex-shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="icon-grad-top" x1="0" y1="0" x2="0" y2="1">
@@ -60,7 +60,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
             <circle cx="6" cy="16" r="6" fill="url(#icon-grad-top)" opacity="0.5" />
           </svg>
           
-          <h1 className="text-xl md:text-2xl font-black tracking-tight text-cocoa drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]">
+          <h1 className="text-xl md:text-2xl font-black tracking-tight leading-none text-cocoa drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]">
             GIGA<span className="text-thatch">GIVRY</span>
           </h1>
         </div>
