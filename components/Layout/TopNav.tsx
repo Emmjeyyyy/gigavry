@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -28,11 +29,16 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
         
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="flex gap-1 drop-shadow-sm">
-            <div className="w-3 h-3 rounded-full bg-gigas shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"></div>
-            <div className="w-3 h-3 rounded-full bg-givry border border-cocoa shadow-[0_1px_2px_rgba(0,0,0,0.1)]"></div>
-            <div className="w-3 h-3 rounded-full bg-cocoa shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)]"></div>
-            <div className="w-3 h-3 rounded-full bg-thatch shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"></div>
+          {/* Increased container to w-8 h-8 for better spacing between circles */}
+          <div className="relative w-8 h-8 flex-shrink-0 drop-shadow-sm">
+            {/* Top */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gigas shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"></div>
+            {/* Right */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-givry border border-cocoa shadow-[0_1px_2px_rgba(0,0,0,0.1)] box-border"></div>
+            {/* Bottom */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-cocoa shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)]"></div>
+            {/* Left */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-thatch shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"></div>
           </div>
           <h1 className="text-xl md:text-2xl font-black tracking-tight text-cocoa drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]">
             GIGA<span className="text-thatch">GIVRY</span>
