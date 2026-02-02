@@ -194,8 +194,6 @@ export const GameDetailPage: React.FC = () => {
                    </div>
                  </div>
                </div>
-               {/* Decorative noise */}
-               <div className="absolute inset-0 opacity-10 bg-[url('http://assets.iceable.com/img/noise-transparent.png')] mix-blend-overlay"></div>
             </div>
           )}
         </div>

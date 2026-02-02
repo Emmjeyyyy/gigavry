@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 
 export const AppShell: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="min-h-screen w-full bg-grain relative flex flex-col">
+    <div className="min-h-screen w-full relative flex flex-col">
       <main className="flex-grow z-10 container mx-auto px-4 pb-20 pt-4 max-w-7xl">
         {children}
       </main>
