@@ -25,11 +25,11 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
 
   return (
     <Link to={`/free-games/${game.id}`} className="group block h-full perspective-1000 relative isolate">
-      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
+      <article className="h-full bg-givry border border-cocoa rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
         shadow-[0_2px_0_0_rgba(70,24,40,0.05)]
         group-hover:-translate-y-[2px] 
-        group-hover:shadow-[0_4px_0_0_rgba(70,24,40,0.05),0_6px_12px_-4px_rgba(70,24,40,0.15)] 
-        group-hover:border-cocoa flex flex-col relative">
+        group-hover:shadow-[0_0_20px_rgba(247,238,198,0.5)] 
+        flex flex-col relative">
         
         <div className="relative aspect-video overflow-hidden">
           <img 
