@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FreeToGameService } from '../services/api';
@@ -153,7 +154,7 @@ export const FreeGames: React.FC<FreeGamesProps> = ({ searchTerm }) => {
           <p className="text-cocoa font-mono text-lg mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()}
-            className="text-thatch underline font-bold hover:text-cocoa"
+            className="text-thatch underline font-bold hover:text-gigas"
           >
             Retry Connection
           </button>

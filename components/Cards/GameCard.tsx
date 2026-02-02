@@ -47,7 +47,7 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
         
         <div className="p-4 flex flex-col flex-grow relative z-10">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-thatch transition-colors drop-shadow-sm">
+            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-gigas transition-colors drop-shadow-sm">
               <HighlightedText text={game.title} />
             </h3>
           </div>

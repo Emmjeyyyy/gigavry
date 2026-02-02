@@ -55,7 +55,7 @@ export const Watchlist: React.FC<WatchlistProps> = ({ searchTerm }) => {
         <div className="flex items-center gap-3">
           <Link 
             to={item.type === 'game' ? `/free-games/${item.id}` : `/giveaways/${item.id}`}
-            className="text-sm font-bold text-thatch hover:text-cocoa uppercase font-mono px-3 py-1.5 rounded hover:bg-cocoa/5 transition-colors"
+            className="text-sm font-bold text-thatch hover:text-gigas uppercase font-mono px-3 py-1.5 rounded hover:bg-cocoa/5 transition-colors"
           >
             View
           </Link>

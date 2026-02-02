@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { GamerPowerService } from '../services/api';
@@ -139,7 +140,7 @@ export const Giveaways: React.FC<GiveawaysProps> = ({ searchTerm }) => {
       {error ? (
         <div className="text-center py-20 bg-givry/20 rounded-xl border border-cocoa/10">
           <p className="text-cocoa font-mono text-lg mb-4">{error}</p>
-          <button onClick={() => window.location.reload()} className="text-thatch underline font-bold hover:text-cocoa">Retry Connection</button>
+          <button onClick={() => window.location.reload()} className="text-thatch underline font-bold hover:text-gigas">Retry Connection</button>
         </div>
       ) : loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

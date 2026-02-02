@@ -57,7 +57,7 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
         </div>
         
         <div className="p-4 flex flex-col flex-grow relative z-10">
-          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-thatch transition-colors drop-shadow-sm">
+          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-gigas transition-colors drop-shadow-sm">
             <HighlightedText text={giveaway.title} />
           </h3>
           

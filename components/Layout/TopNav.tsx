@@ -20,7 +20,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
     `relative px-4 py-2 font-mono font-bold uppercase tracking-wider text-sm transition-all duration-200 rounded-md
     ${isActive 
       ? 'text-cocoa bg-givry shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_2px_4px_rgba(70,24,40,0.1)] border border-cocoa/20 translate-y-[-1px]' 
-      : 'text-cocoa/60 hover:text-cocoa hover:bg-givry/50 hover:shadow-sm'
+      : 'text-cocoa/60 hover:text-gigas hover:bg-givry/50 hover:shadow-sm'
     }`;
 
   return (
@@ -81,7 +81,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
         {/* Search */}
         <div className="relative w-full md:w-64 group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg className="h-4 w-4 text-cocoa/40 group-focus-within:text-cocoa transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="h-4 w-4 text-cocoa/40 group-focus-within:text-gigas transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
