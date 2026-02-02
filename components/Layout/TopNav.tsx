@@ -25,11 +25,11 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
 
   return (
     <header className="sticky top-0 z-40 w-full mb-8 pt-4 pb-2">
-      <div className="bg-givry/90 backdrop-blur-md border border-cocoa/20 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05),0_1px_0_rgba(255,255,255,0.2)_inset] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-givry/90 backdrop-blur-md border border-cocoa/20 rounded-2xl shadow-[0_4px_20px_rgba(70,24,40,0.08),0_1px_0_rgba(255,255,255,0.2)_inset] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
         
         {/* Logo */}
         <div className="flex items-center gap-1.5">
-          <svg className="w-8 h-8 flex-shrink-0 drop-shadow-sm" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="icon-grad-top" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stopColor="black" stopOpacity="0.2"/>
@@ -40,7 +40,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
                 <stop offset="1" stopColor="white" stopOpacity="0"/>
               </linearGradient>
               <filter id="icon-drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="rgba(0,0,0,0.1)"/>
+                <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="rgba(70,24,40,0.15)"/>
               </filter>
             </defs>
             
@@ -66,7 +66,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
         </div>
 
         {/* Navigation */}
-        <nav className="flex items-center gap-2 p-1.5 bg-cocoa/5 rounded-lg overflow-x-auto max-w-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] border border-cocoa/5">
+        <nav className="flex items-center gap-2 p-1.5 bg-cocoa/5 rounded-lg overflow-x-auto max-w-full shadow-[inset_0_2px_4px_rgba(70,24,40,0.05)] border border-cocoa/5">
           <NavLink to="/free-games" className={navLinkClass}>
             Games
           </NavLink>
@@ -90,7 +90,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             className="block w-full pl-10 pr-3 py-2 border border-cocoa/20 rounded-lg leading-5 bg-white/50 placeholder-cocoa/40 
-            shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]
+            shadow-[inset_0_2px_4px_rgba(70,24,40,0.05)]
             focus:outline-none focus:ring-2 focus:ring-cocoa/20 focus:border-cocoa focus:bg-white focus:shadow-[0_2px_8px_rgba(70,24,40,0.1)]
             text-sm font-mono text-cocoa transition-all"
             placeholder={getPlaceholder()}

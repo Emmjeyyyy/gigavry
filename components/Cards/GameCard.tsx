@@ -39,7 +39,11 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
             loading="lazy"
           />
           <div className="absolute top-2 right-2">
-            <Badge label={game.platform === 'PC (Windows)' ? 'PC' : 'WEB'} variant="primary" className="shadow-md" />
+            <Badge 
+              label={game.platform === 'PC (Windows)' ? 'PC' : 'WEB'} 
+              variant="primary" 
+              className="shadow-[0_2px_0_rgba(70,24,40,0.1)]" 
+            />
           </div>
           {/* Inner vignette for depth */}
           <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-t-xl pointer-events-none" />

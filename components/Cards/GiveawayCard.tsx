@@ -44,11 +44,11 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
             <Badge 
               label={giveaway.worth === 'N/A' ? 'FREE' : giveaway.worth} 
               variant="secondary" 
-              className="shadow-md !bg-gigas !border-gigas" 
+              className="shadow-[0_2px_0_rgba(70,24,40,0.1)] !bg-gigas !border-gigas" 
             />
           </div>
           <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-cocoa/80 to-transparent p-4 flex items-end">
-            <div className="text-givry text-xs font-mono drop-shadow-md">
+            <div className="text-givry text-xs font-mono drop-shadow-[0_1px_1px_rgba(70,24,40,0.5)]">
               {giveaway.type}
             </div>
           </div>
