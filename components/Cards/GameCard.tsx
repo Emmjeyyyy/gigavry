@@ -1,0 +1,62 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FreeGame } from '../../types';
+import { Badge } from '../UI/Badge';
+
+interface GameCardProps {
+  game: FreeGame;
+  searchHighlight?: string;
+}
+
+export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => {
+  const HighlightedText = ({ text }: { text: string }) => {
+    if (!searchHighlight) return <>{text}</>;
+    const parts = text.split(new RegExp(`(${searchHighlight})`, 'gi'));
+    return (
+      <>
+        {parts.map((part, i) => 
+          part.toLowerCase() === searchHighlight.toLowerCase() ? 
+            <span key={i} className="bg-thatch/30 text-cocoa font-bold rounded px-0.5">{part}</span> : part
+        )}
+      </>
+    );
+  };
+
+  return (
+    <Link to={`/free-games/${game.id}`} className="group block h-full">
+      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(247,238,198,0.4)] hover:border-cocoa flex flex-col relative">
+        <div className="relative aspect-video overflow-hidden">
+          <img 
+            src={game.thumbnail} 
+            alt={game.title} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute top-2 right-2">
+            <Badge label={game.platform === 'PC (Windows)' ? 'PC' : 'WEB'} variant="primary" className="shadow-sm" />
+          </div>
+        </div>
+        
+        <div className="p-4 flex flex-col flex-grow relative z-10">
+          <div className="flex justify-between items-start mb-2">
+            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-thatch transition-colors">
+              <HighlightedText text={game.title} />
+            </h3>
+          </div>
+          
+          <p className="text-sm text-cocoa/70 mb-4 line-clamp-2 flex-grow">
+            {game.short_description}
+          </p>
+          
+          <div className="flex items-center justify-between mt-auto pt-3 border-t border-cocoa/10">
+            <Badge label={game.genre} variant="outline" />
+            <span className="text-xs font-mono text-cocoa/50">{game.publisher}</span>
+          </div>
+        </div>
+        
+        {/* Hover glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-t from-givry via-transparent to-transparent opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none" />
+      </article>
+    </Link>
+  );
+};

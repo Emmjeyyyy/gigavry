@@ -1,0 +1,80 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Giveaway } from '../../types';
+import { Badge } from '../UI/Badge';
+
+interface GiveawayCardProps {
+  giveaway: Giveaway;
+  searchHighlight?: string;
+}
+
+export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHighlight }) => {
+  const isExpired = giveaway.status === 'Active' ? false : true;
+
+  const HighlightedText = ({ text }: { text: string }) => {
+    if (!searchHighlight) return <>{text}</>;
+    const parts = text.split(new RegExp(`(${searchHighlight})`, 'gi'));
+    return (
+      <>
+        {parts.map((part, i) => 
+          part.toLowerCase() === searchHighlight.toLowerCase() ? 
+            <span key={i} className="bg-thatch/30 text-cocoa font-bold rounded px-0.5">{part}</span> : part
+        )}
+      </>
+    );
+  };
+
+  return (
+    <Link to={`/giveaways/${giveaway.id}`} className={`group block h-full ${isExpired ? 'opacity-60 grayscale' : ''}`}>
+      <article className="h-full bg-givry border border-cocoa/20 rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(247,238,198,0.4)] hover:border-cocoa flex flex-col relative">
+        <div className="relative aspect-video overflow-hidden">
+          <img 
+            src={giveaway.thumbnail} 
+            alt={giveaway.title} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute top-2 left-2">
+            <Badge 
+              label={giveaway.worth === 'N/A' ? 'FREE' : giveaway.worth} 
+              variant="secondary" 
+              className="shadow-sm" 
+            />
+          </div>
+          <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-cocoa/80 to-transparent p-4 flex items-end">
+            <div className="text-givry text-xs font-mono">
+              {giveaway.type}
+            </div>
+          </div>
+        </div>
+        
+        <div className="p-4 flex flex-col flex-grow relative z-10">
+          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-thatch transition-colors">
+            <HighlightedText text={giveaway.title} />
+          </h3>
+          
+          <p className="text-sm text-cocoa/70 mb-4 line-clamp-2 flex-grow">
+            {giveaway.description}
+          </p>
+          
+          <div className="flex flex-wrap gap-1 mt-auto pt-3 border-t border-cocoa/10">
+             {/* Platform parsing could be improved, often comma separated */}
+             {giveaway.platforms.split(',').slice(0, 2).map(p => (
+               <Badge key={p} label={p.trim()} variant="outline" className="text-[9px]" />
+             ))}
+             {giveaway.platforms.split(',').length > 2 && (
+               <span className="text-xs text-cocoa/50 self-center">+ more</span>
+             )}
+          </div>
+          
+          {giveaway.end_date && giveaway.end_date !== 'N/A' && (
+             <div className="mt-2 text-xs font-mono text-thatch flex items-center gap-1">
+               <span className="w-2 h-2 rounded-full bg-thatch animate-pulse"></span>
+               Ends: {new Date(giveaway.end_date).toLocaleDateString()}
+             </div>
+          )}
+        </div>
+      </article>
+    </Link>
+  );
+};
