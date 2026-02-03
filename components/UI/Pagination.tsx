@@ -11,7 +11,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
   if (totalPages <= 1) return null;
 
   return (
-    <nav aria-label="Pagination" className="mt-12 mb-8 px-4 w-full flex justify-center">
+    <nav aria-label="Pagination" className="mt-12 mb-0 px-4 w-full flex justify-center">
       <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 bg-givry border-2 border-cocoa/20 rounded-2xl p-3 sm:px-6 sm:py-3 shadow-[4px_4px_0px_0px_rgba(70,24,40,0.2),inset_0_1px_0_rgba(255,255,255,0.5)]">
         
         {/* Mobile Info Text */}
