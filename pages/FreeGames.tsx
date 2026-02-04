@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FreeToGameService } from '../services/api';
@@ -121,7 +120,7 @@ export const FreeGames: React.FC<FreeGamesProps> = ({ searchTerm }) => {
   return (
     <div className="space-y-6">
       {/* Filters Bar */}
-      <div className="flex flex-col lg:flex-row gap-4 bg-givry/50 p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm">
+      <div className="flex flex-col lg:flex-row gap-4 bg-givry/50 p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm shadow-none hover:shadow-none">
         <select 
           value={filters.platform}
           onChange={(e) => updateFilter('platform', e.target.value)}
