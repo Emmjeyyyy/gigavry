@@ -3,6 +3,8 @@ import { FreeGame, GameDetail, Giveaway } from '../types';
 
 // Cache configuration
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const STORAGE_PREFIX = 'gigagivry_api_v1_';
+
 interface CacheEntry<T> {
   data: T;
   timestamp: number;
@@ -25,23 +27,56 @@ const getCacheKey = (prefix: string, params: any = {}) => {
 };
 
 const getFromCache = <T>(key: string): T | null => {
-  const entry = cache.get(key);
-  if (!entry) return null;
-  
   const now = Date.now();
-  if (now - entry.timestamp > CACHE_TTL) {
+  
+  // 1. Check Memory Cache
+  const memoryEntry = cache.get(key);
+  if (memoryEntry) {
+    if (now - memoryEntry.timestamp <= CACHE_TTL) {
+      return memoryEntry.data;
+    }
     cache.delete(key);
-    return null;
+  }
+
+  // 2. Check Persistent Storage
+  try {
+    const storageKey = STORAGE_PREFIX + key;
+    const stored = window.localStorage.getItem(storageKey);
+    if (stored) {
+      const parsed: CacheEntry<T> = JSON.parse(stored);
+      // Valid TTL?
+      if (now - parsed.timestamp <= CACHE_TTL) {
+        // Hydrate memory cache for faster subsequent access
+        cache.set(key, parsed);
+        return parsed.data;
+      } else {
+        // Expired, clean up
+        window.localStorage.removeItem(storageKey);
+      }
+    }
+  } catch (error) {
+    console.warn('Cache read failed:', error);
   }
   
-  return entry.data;
+  return null;
 };
 
 const setCache = <T>(key: string, data: T) => {
-  cache.set(key, {
+  const entry = {
     data,
     timestamp: Date.now(),
-  });
+  };
+  
+  // Update Memory
+  cache.set(key, entry);
+  
+  // Update Storage
+  try {
+    const storageKey = STORAGE_PREFIX + key;
+    window.localStorage.setItem(storageKey, JSON.stringify(entry));
+  } catch (error) {
+    console.warn('Cache write failed (storage quota?):', error);
+  }
 };
 
 const fetchWithProxy = async (url: string) => {
@@ -72,7 +107,7 @@ const fetchWithProxy = async (url: string) => {
 
 // Helper to handle caching and in-flight deduplication
 const fetchWithCache = async <T>(key: string, fetcher: () => Promise<T>): Promise<T> => {
-  // 1. Check Cache
+  // 1. Check Cache (Memory + Disk)
   const cached = getFromCache<T>(key);
   if (cached) return cached;
 
