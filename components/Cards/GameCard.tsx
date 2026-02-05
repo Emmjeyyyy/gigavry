@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FreeGame } from '../../types';
 import { Badge } from '../UI/Badge';
+import { FreeToGameService } from '../../services/api';
 
 interface GameCardProps {
   game: FreeGame;
@@ -24,7 +25,12 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
   };
 
   return (
-    <Link to={`/free-games/${game.id}`} className="group block h-full perspective-1000 relative isolate">
+    <Link 
+      to={`/free-games/${game.id}`} 
+      state={{ game }}
+      onMouseEnter={() => FreeToGameService.getGameDetails(game.id).catch(() => {})}
+      className="group block h-full perspective-1000 relative isolate"
+    >
       <article className="h-full bg-givry border border-cocoa rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
         group-hover:-translate-y-[2px] group-hover:shadow-[0_0_15px_#e6ddc2]
         flex flex-col relative">
