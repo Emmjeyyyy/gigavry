@@ -31,7 +31,7 @@ export const Watchlist: React.FC<WatchlistProps> = ({ searchTerm }) => {
 
   const ItemRow = ({ item }: { item: WatchlistItem }) => (
     <div className="relative block mb-3">
-      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out">
+      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out hover:shadow-[0_0_15px_#e6ddc2]">
         <div className="w-full sm:w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 relative">
           <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
         </div>

@@ -28,7 +28,7 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
   return (
     <Link to={`/giveaways/${giveaway.id}`} className={`group block h-full perspective-1000 relative isolate ${isExpired ? 'opacity-60 grayscale' : ''}`}>
       <article className="h-full bg-givry border border-cocoa rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
-        group-hover:-translate-y-[2px] 
+        group-hover:-translate-y-[2px] group-hover:shadow-[0_0_15px_#e6ddc2]
         flex flex-col relative">
         
         <div className="relative aspect-video overflow-hidden">
