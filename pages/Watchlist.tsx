@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -31,11 +30,10 @@ export const Watchlist: React.FC<WatchlistProps> = ({ searchTerm }) => {
   };
 
   const ItemRow = ({ item }: { item: WatchlistItem }) => (
-    <div className="group relative block mb-3">
-      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out transform-gpu will-change-transform
-        hover:bg-givry group-hover:border-cocoa/30
+    <div className="relative block mb-3">
+      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out
+        hover:border-cocoa/30
         shadow-[0_2px_0_rgba(70,24,40,0.05)]
-        group-hover:-translate-y-px group-hover:shadow-[0_3px_6px_rgba(70,24,40,0.1),0_2px_0_rgba(70,24,40,0.05)]
       ">
         <div className="w-full sm:w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 shadow-inner relative">
           <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
