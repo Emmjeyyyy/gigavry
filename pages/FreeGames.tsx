@@ -120,11 +120,11 @@ export const FreeGames: React.FC<FreeGamesProps> = ({ searchTerm }) => {
   return (
     <div className="space-y-6">
       {/* Filters Bar */}
-      <div className="flex flex-col lg:flex-row gap-4 bg-givry/50 p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm shadow-none hover:shadow-none">
+      <div className="flex flex-col lg:flex-row gap-4 bg-[#e6ddc2] p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm shadow-none hover:shadow-none">
         <select 
           value={filters.platform}
           onChange={(e) => updateFilter('platform', e.target.value)}
-          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:ring-2 focus:ring-cocoa/20 focus:outline-none"
+          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:outline-none"
         >
           {PLATFORMS.GAMES.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
         </select>
@@ -132,7 +132,7 @@ export const FreeGames: React.FC<FreeGamesProps> = ({ searchTerm }) => {
         <select 
           value={filters.category || 'all'}
           onChange={(e) => updateFilter('category', e.target.value)}
-          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:ring-2 focus:ring-cocoa/20 focus:outline-none capitalize"
+          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:outline-none capitalize"
         >
           <option value="all">All Genres</option>
           {GAME_CATEGORIES.map(c => <option key={c} value={c}>{c.replace('-', ' ')}</option>)}
@@ -141,7 +141,7 @@ export const FreeGames: React.FC<FreeGamesProps> = ({ searchTerm }) => {
         <select 
           value={filters.sort}
           onChange={(e) => updateFilter('sort', e.target.value)}
-          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:ring-2 focus:ring-cocoa/20 focus:outline-none lg:ml-auto"
+          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:outline-none lg:ml-auto"
         >
           {SORT_OPTIONS.GAMES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
         </select>

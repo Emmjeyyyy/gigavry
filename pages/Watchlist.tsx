@@ -31,9 +31,7 @@ export const Watchlist: React.FC<WatchlistProps> = ({ searchTerm }) => {
 
   const ItemRow = ({ item }: { item: WatchlistItem }) => (
     <div className="relative block mb-3">
-      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out
-        hover:border-cocoa/30
-      ">
+      <div className="flex flex-col sm:flex-row items-center gap-4 bg-givry border border-cocoa/10 p-4 rounded-xl transition-all duration-200 ease-out">
         <div className="w-full sm:w-32 aspect-video rounded-lg overflow-hidden flex-shrink-0 relative">
           <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
         </div>
@@ -71,7 +69,7 @@ export const Watchlist: React.FC<WatchlistProps> = ({ searchTerm }) => {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center bg-givry/20 p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm">
+      <div className="flex justify-between items-center bg-[#e6ddc2] p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm">
         <h2 className="text-2xl font-black text-cocoa tracking-tight">Tracked Items</h2>
         {watchlist.length > 0 && (
           <Button variant="ghost" className="text-red-500 hover:bg-red-50 hover:text-red-600 border-red-200" onClick={() => setShowConfirm(true)}>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FreeGame } from '../../types';
@@ -62,9 +61,6 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
             <span className="text-xs font-mono text-cocoa/50">{game.publisher}</span>
           </div>
         </div>
-        
-        {/* Hover subtle glow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-givry via-transparent to-transparent opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none" />
       </article>
     </Link>
   );

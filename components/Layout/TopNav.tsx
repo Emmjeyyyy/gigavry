@@ -86,7 +86,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             className="block w-full pl-10 pr-3 py-2 border border-cocoa/20 rounded-lg leading-5 bg-white/50 placeholder-cocoa/40 
-            focus:outline-none focus:ring-2 focus:ring-cocoa/20 focus:border-cocoa focus:bg-white
+            focus:outline-none focus:border-cocoa focus:bg-white
             text-sm font-mono text-cocoa transition-all"
             placeholder={getPlaceholder()}
           />

@@ -110,11 +110,11 @@ export const Giveaways: React.FC<GiveawaysProps> = ({ searchTerm }) => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col lg:flex-row gap-4 bg-givry/50 p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm shadow-none hover:shadow-none">
+      <div className="flex flex-col lg:flex-row gap-4 bg-[#e6ddc2] p-4 rounded-xl border border-cocoa/10 backdrop-blur-sm shadow-none hover:shadow-none">
         <select 
           value={filters.platform}
           onChange={(e) => updateFilter('platform', e.target.value)}
-          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:ring-2 focus:ring-cocoa/20 focus:outline-none"
+          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:outline-none"
         >
           {PLATFORMS.GIVEAWAYS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
         </select>
@@ -122,7 +122,7 @@ export const Giveaways: React.FC<GiveawaysProps> = ({ searchTerm }) => {
         <select 
           value={filters.type}
           onChange={(e) => updateFilter('type', e.target.value)}
-          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:ring-2 focus:ring-cocoa/20 focus:outline-none"
+          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:outline-none"
         >
           {GIVEAWAY_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
         </select>
@@ -130,7 +130,7 @@ export const Giveaways: React.FC<GiveawaysProps> = ({ searchTerm }) => {
         <select 
           value={filters.sort}
           onChange={(e) => updateFilter('sort', e.target.value)}
-          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:ring-2 focus:ring-cocoa/20 focus:outline-none lg:ml-auto"
+          className="bg-white/50 border border-cocoa/20 rounded-lg px-3 py-2 text-sm text-cocoa focus:outline-none lg:ml-auto"
         >
           {SORT_OPTIONS.GIVEAWAYS.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
         </select>

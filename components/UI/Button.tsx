@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
     
     secondary: "bg-thatch text-white border-2 border-thatch hover:translate-x-[0.5px] hover:translate-y-[0.5px] px-4 py-2 rounded-lg",
     
-    ghost: "bg-transparent text-cocoa hover:text-gigas hover:bg-cocoa/5 px-4 py-2 rounded-lg border border-transparent hover:border-cocoa/20 active:bg-cocoa/10"
+    ghost: "bg-transparent text-cocoa hover:text-gigas hover:bg-cocoa/5 px-4 py-2 rounded-lg border border-transparent active:bg-cocoa/10"
   };
 
   return (

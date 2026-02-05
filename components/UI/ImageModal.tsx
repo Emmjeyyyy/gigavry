@@ -42,7 +42,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageSr
       
       <button 
         onClick={onClose}
-        className="absolute top-4 right-4 text-givry/60 hover:text-givry hover:bg-white/10 rounded-full p-2 transition-all z-50 focus:outline-none focus:ring-2 focus:ring-givry"
+        className="absolute top-4 right-4 text-givry/60 hover:text-givry hover:bg-white/10 rounded-full p-2 transition-all z-50 focus:outline-none"
         aria-label="Close full screen view"
       >
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
