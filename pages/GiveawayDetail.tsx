@@ -82,7 +82,7 @@ export const GiveawayDetailPage: React.FC = () => {
         </Button>
       </div>
 
-      <div className="bg-givry border border-cocoa/20 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-givry border border-cocoa/20 rounded-2xl overflow-hidden">
         <div 
           className="relative h-64 md:h-80 w-full cursor-zoom-in group"
           onClick={() => setSelectedImage(giveaway.image)}
@@ -98,7 +98,7 @@ export const GiveawayDetailPage: React.FC = () => {
                  <Badge label={giveaway.type} variant="secondary" />
                  <Badge label={giveaway.status} className="bg-green-500 text-white border-green-600" />
                </div>
-               <h1 className="text-3xl md:text-5xl font-black text-givry tracking-tight shadow-black drop-shadow-lg leading-tight">
+               <h1 className="text-3xl md:text-5xl font-black text-givry tracking-tight leading-tight">
                  {giveaway.title}
                </h1>
             </div>

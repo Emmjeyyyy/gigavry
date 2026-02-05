@@ -95,7 +95,7 @@ export const SkeletonGiveawayDetail: React.FC = () => {
       {/* Back Button */}
       <div className="mb-6 h-10 w-48 bg-givry/30 rounded-lg" />
 
-      <div className="bg-givry border border-cocoa/20 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-givry border border-cocoa/20 rounded-2xl overflow-hidden">
         {/* Banner */}
         <div className="h-64 md:h-80 w-full bg-cocoa/5 relative">
            <div className="absolute bottom-6 left-6 right-6 space-y-3">

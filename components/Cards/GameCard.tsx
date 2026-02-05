@@ -26,9 +26,7 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
   return (
     <Link to={`/free-games/${game.id}`} className="group block h-full perspective-1000 relative isolate">
       <article className="h-full bg-givry border border-cocoa rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
-        shadow-[0_2px_0_0_rgba(70,24,40,0.05)]
         group-hover:-translate-y-[2px] 
-        group-hover:shadow-[0_0_20px_rgba(247,238,198,0.5)] 
         flex flex-col relative">
         
         <div className="relative aspect-video overflow-hidden">
@@ -42,7 +40,6 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
             <Badge 
               label={game.platform === 'PC (Windows)' ? 'PC' : 'WEB'} 
               variant="primary" 
-              className="shadow-[0_2px_0_rgba(70,24,40,0.1)]" 
             />
           </div>
           {/* Inner vignette for depth */}
@@ -51,7 +48,7 @@ export const GameCard: React.FC<GameCardProps> = ({ game, searchHighlight }) => 
         
         <div className="p-4 flex flex-col flex-grow relative z-10">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-gigas transition-colors drop-shadow-sm">
+            <h3 className="font-bold text-lg leading-tight text-cocoa line-clamp-1 group-hover:text-gigas transition-colors">
               <HighlightedText text={game.title} />
             </h3>
           </div>

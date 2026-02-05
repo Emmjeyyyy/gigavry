@@ -28,9 +28,7 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
   return (
     <Link to={`/giveaways/${giveaway.id}`} className={`group block h-full perspective-1000 relative isolate ${isExpired ? 'opacity-60 grayscale' : ''}`}>
       <article className="h-full bg-givry border border-cocoa rounded-xl overflow-hidden transition-all duration-300 ease-out transform-gpu will-change-transform
-        shadow-[0_2px_0_0_rgba(70,24,40,0.05)]
         group-hover:-translate-y-[2px] 
-        group-hover:shadow-[0_0_20px_rgba(247,238,198,0.5)] 
         flex flex-col relative">
         
         <div className="relative aspect-video overflow-hidden">
@@ -44,11 +42,11 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
             <Badge 
               label={giveaway.worth === 'N/A' ? 'FREE' : giveaway.worth} 
               variant="secondary" 
-              className="shadow-[0_2px_0_rgba(70,24,40,0.1)] !bg-gigas !border-gigas" 
+              className="!bg-gigas !border-gigas" 
             />
           </div>
           <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-cocoa/80 to-transparent p-4 flex items-end">
-            <div className="text-givry text-xs font-mono drop-shadow-[0_1px_1px_rgba(70,24,40,0.5)]">
+            <div className="text-givry text-xs font-mono">
               {giveaway.type}
             </div>
           </div>
@@ -57,7 +55,7 @@ export const GiveawayCard: React.FC<GiveawayCardProps> = ({ giveaway, searchHigh
         </div>
         
         <div className="p-4 flex flex-col flex-grow relative z-10">
-          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-gigas transition-colors drop-shadow-sm">
+          <h3 className="font-bold text-lg leading-tight text-cocoa mb-2 line-clamp-2 group-hover:text-gigas transition-colors">
             <HighlightedText text={giveaway.title} />
           </h3>
           

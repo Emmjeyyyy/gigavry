@@ -90,7 +90,7 @@ export const GameDetailPage: React.FC = () => {
         {/* Left Col - Media */}
         <div className="lg:col-span-1 space-y-6">
           <div 
-            className="rounded-xl overflow-hidden border-2 border-cocoa shadow-[6px_6px_0px_0px_rgba(70,24,40,0.2)] cursor-zoom-in group"
+            className="rounded-xl overflow-hidden border-2 border-cocoa cursor-zoom-in group"
             onClick={() => setSelectedImage(game.thumbnail)}
           >
             <img 
@@ -145,7 +145,7 @@ export const GameDetailPage: React.FC = () => {
 
         {/* Right Col - Info */}
         <div className="lg:col-span-2 space-y-8">
-          <div className="bg-givry p-8 rounded-2xl border border-cocoa/10 shadow-sm">
+          <div className="bg-givry p-8 rounded-2xl border border-cocoa/10">
             <h1 className="text-4xl font-black text-cocoa mb-4 tracking-tight">{game.title}</h1>
             <p className="text-xl text-cocoa/80 font-light leading-relaxed">{game.description}</p>
           </div>

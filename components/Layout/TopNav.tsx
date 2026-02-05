@@ -18,13 +18,13 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
   const navLinkClass = ({ isActive }: { isActive: boolean }) => 
     `relative px-4 py-2 font-mono font-bold uppercase tracking-wider text-sm transition-all duration-200 rounded-md
     ${isActive 
-      ? 'text-cocoa bg-givry shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_2px_4px_rgba(70,24,40,0.1)] border border-cocoa/20 translate-y-[-1px]' 
+      ? 'text-cocoa bg-givry border border-cocoa/20 translate-y-[-1px]' 
       : 'text-cocoa/60 hover:text-gigas hover:bg-givry/50'
     }`;
 
   return (
     <header className="sticky top-0 z-40 w-full mb-8 pt-4 pb-2">
-      <div className="bg-givry/90 backdrop-blur-md border border-cocoa/20 rounded-2xl shadow-[0_4px_20px_rgba(70,24,40,0.08),0_1px_0_rgba(255,255,255,0.2)_inset] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-givry/90 backdrop-blur-md border border-cocoa/20 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
         
         {/* Logo */}
         <div className="flex items-center gap-1.5">
@@ -38,9 +38,6 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
                 <stop offset="0" stopColor="white" stopOpacity="0.2"/>
                 <stop offset="1" stopColor="white" stopOpacity="0"/>
               </linearGradient>
-              <filter id="icon-drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="rgba(70,24,40,0.15)"/>
-              </filter>
             </defs>
             
             {/* Top: Gigas */}
@@ -48,7 +45,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
             <circle cx="16" cy="6" r="6" fill="url(#icon-grad-top)" />
 
             {/* Right: Givry + Border Cocoa */}
-            <circle cx="26" cy="16" r="5.5" fill="#f7eec6" stroke="#461828" strokeWidth="1" filter="url(#icon-drop-shadow)" />
+            <circle cx="26" cy="16" r="5.5" fill="#f7eec6" stroke="#461828" strokeWidth="1" />
 
             {/* Bottom: Cocoa */}
             <circle cx="16" cy="26" r="6" fill="#461828" />
@@ -59,13 +56,13 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
             <circle cx="6" cy="16" r="6" fill="url(#icon-grad-top)" opacity="0.5" />
           </svg>
           
-          <h1 className="text-xl md:text-2xl font-black tracking-tight leading-none text-cocoa drop-shadow-[0_1px_0_rgba(255,255,255,0.5)]">
+          <h1 className="text-xl md:text-2xl font-black tracking-tight leading-none text-cocoa">
             GIGA<span className="text-thatch">GIVRY</span>
           </h1>
         </div>
 
         {/* Navigation */}
-        <nav className="flex items-center gap-2 p-1.5 bg-cocoa/5 rounded-lg overflow-x-auto max-w-full shadow-[inset_0_2px_4px_rgba(70,24,40,0.05)] border border-cocoa/5">
+        <nav className="flex items-center gap-2 p-1.5 bg-cocoa/5 rounded-lg overflow-x-auto max-w-full border border-cocoa/5">
           <NavLink to="/free-games" className={navLinkClass}>
             Games
           </NavLink>
@@ -89,8 +86,7 @@ export const TopNav: React.FC<TopNavProps> = ({ searchTerm, onSearchChange }) =>
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             className="block w-full pl-10 pr-3 py-2 border border-cocoa/20 rounded-lg leading-5 bg-white/50 placeholder-cocoa/40 
-            shadow-[inset_0_2px_4px_rgba(70,24,40,0.05)]
-            focus:outline-none focus:ring-2 focus:ring-cocoa/20 focus:border-cocoa focus:bg-white focus:shadow-[0_2px_8px_rgba(70,24,40,0.1)]
+            focus:outline-none focus:ring-2 focus:ring-cocoa/20 focus:border-cocoa focus:bg-white
             text-sm font-mono text-cocoa transition-all"
             placeholder={getPlaceholder()}
           />
